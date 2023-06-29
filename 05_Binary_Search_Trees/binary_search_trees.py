@@ -41,6 +41,75 @@ class BST:
         else:
             return self.search(val, node.right)
 
+    def insert(self, val):
+        curr_node = self.root
+
+        while True:
+            if val < curr_node.val:
+                if curr_node.left:
+                    curr_node = curr_node.left
+                else:
+                    curr_node.left = Node(val)
+                    break
+
+            elif curr_node.right:
+                curr_node = curr_node.right
+            else:
+                curr_node.right = Node(val)
+                break
+
+def delete(val, node):
+    if node is None:
+        return None
+
+    if val < node.val:
+        node.left = delete(val, node.left)
+        return node
+
+    elif val > node.val:
+        node.right = delete(val, node.right)
+        return node
+
+    else:
+        # Need to delete the current node
+        # If there is no left child, return the right child
+        if node.left is None:
+            return node.right
+
+        # If there is no right child, return the left child
+        if node.right is None:
+            return node.left
+
+        # If it has two children, find the successor
+        node.right = lift(node.right, node)
+        return node
+
+
+def lift(node, node_to_delete):
+    if node.left is not None:
+        node.left = lift(node.left, node_to_delete)
+        return node
+    else:
+        node_to_delete.val = node.val
+        return node.right
+
+
+def insert_recursive(val, root):
+    if val < root.val:
+        if root.left:
+            return insert_recursive(val, root.left)
+        else:
+            root.left = Node(val)
+            return
+
+    elif root.right:
+        return insert_recursive(val, root.right)
+
+    else:
+        root.right = Node(val)
+
+
+
 def print_values(node):
     if node is None:
         return
@@ -57,11 +126,15 @@ vals = [1, 2, 3, 4, 5, 6, 7]
 
 bst = BST(vals)
 
-n = bst.find(9)
-if n:
-    print(n.val)
-else:
-    print('does not exist.')
+delete(4, bst.root)
+
+print_values(bst.root)
+
+# n = bst.find(9)
+# if n:
+#     print(n.val)
+# else:
+#     print('does not exist.')
 
 # root = bst.root
 # print_values(root)
