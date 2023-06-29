@@ -58,6 +58,7 @@ class BST:
                 curr_node.right = Node(val)
                 break
 
+
 def delete(val, node):
     if node is None:
         return None
@@ -97,17 +98,15 @@ def lift(node, node_to_delete):
 def insert_recursive(val, root):
     if val < root.val:
         if root.left:
-            return insert_recursive(val, root.left)
+            insert_recursive(val, root.left)
         else:
             root.left = Node(val)
-            return
 
     elif root.right:
-        return insert_recursive(val, root.right)
+        insert_recursive(val, root.right)
 
     else:
         root.right = Node(val)
-
 
 
 def print_values(node):
