@@ -116,8 +116,8 @@ def print_values(node):
     left = 'None' if node.left is None else node.left.val
     right = 'None' if node.right is None else node.right.val
 
-    print(f'Node: {node.val} - Left: {left} - Right: {right}')
     print_values(node.left)
+    print(f'Node: {node.val} - Left: {left} - Right: {right}')
     print_values(node.right)
 
 
