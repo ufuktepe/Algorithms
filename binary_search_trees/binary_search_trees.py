@@ -91,12 +91,12 @@ def lift(node, node_to_delete):
         node.left = lift(node.left, node_to_delete)
         return node
     else:
-        node_to_delete.val = node.val
+        node_to_delete.item = node.item
         return node.right
 
 
 def insert_recursive(val, root):
-    if val < root.val:
+    if val < root.item:
         if root.left:
             insert_recursive(val, root.left)
         else:
@@ -113,8 +113,8 @@ def print_values(node):
     if node is None:
         return
 
-    left = 'None' if node.left is None else node.left.val
-    right = 'None' if node.right is None else node.right.val
+    left = 'None' if node.left is None else node.left.item
+    right = 'None' if node.right is None else node.right.item
 
     print_values(node.left)
     print(f'Node: {node.val} - Left: {left} - Right: {right}')
