@@ -5,7 +5,7 @@ class Node:
         self.right = right
 
 
-class BST:
+class BST:git
     def __init__(self, vals):
         self.root = self.generate(vals)
 
