@@ -1,4 +1,4 @@
-from singly_linked_list_node import SinglyLinkedListNode as Node
+from linked_lists.singly_linked_list_node import SinglyLinkedListNode as Node
 
 
 class SinglyLinkedList:
@@ -12,11 +12,11 @@ class SinglyLinkedList:
     def __iter__(self):
         curr_node = self.head
         while curr_node:
-            yield curr_node.val
+            yield curr_node.item
             curr_node = curr_node.next
 
-    def build(self, vals):
-        for item in reversed(vals):
+    def build(self, items):
+        for item in reversed(items):
             self.insert_first(item)
 
     def _get_node_at(self, i):
@@ -31,32 +31,32 @@ class SinglyLinkedList:
 
     def get_at(self, i):
         node = self._get_node_at(i)
-        return node.val
+        return node.item
 
-    def set_at(self, i, val):
+    def set_at(self, i, item):
         node = self._get_node_at(i)
-        node.val = val
+        node.item = item
 
-    def insert_first(self, val):
-        new_node = Node(val, next=self.head)
+    def insert_first(self, item):
+        new_node = Node(item, next=self.head)
         self.head = new_node
         self.size += 1
 
     def delete_first(self):
         if self.head is None:
             return
-        val = self.head.val
+        item = self.head.item
         self.head = self.head.next
         self.size -= 1
 
-        return val
+        return item
 
-    def insert_at(self, i, val):
+    def insert_at(self, i, item):
         if i == 0:
-            self.insert_first(val)
+            self.insert_first(item)
             return
 
-        new_node = Node(val)
+        new_node = Node(item)
         prev_node = self._get_node_at(i - 1)
         new_node.next = prev_node.next
         prev_node.next = new_node
@@ -68,38 +68,17 @@ class SinglyLinkedList:
 
         prev_node = self._get_node_at(i - 1)
         node = self._get_node_at(i)
-        val = node.val
+        item = node.item
         prev_node.next = node.next
         self.size -= 1
 
-        return val
+        return item
 
-    def insert_last(self, val):
-        self.insert_at(self.size, val)
+    def insert_last(self, item):
+        self.insert_at(self.size, item)
 
     def delete_last(self):
         self.delete_at(self.size - 1)
-
-    # def add_first(self, val):
-    #     node = self.Node(val, next=self.head)
-    #     self.head = node
-    #
-    #     if self.tail is None:
-    #         self.tail = node
-    #
-    #     self.size += 1
-    #
-    # def remove_first(self):
-    #     if self.head is None:
-    #         return
-    #     self.head = self.head.next
-    #     self.size -= 1
-    #
-    # def add_last(self, val):
-    #     node = self.Node(val)
-    #     self.tail.next = node
-    #     self.tail = node
-    #     self.size += 1
 
     def __str__(self):
         str_rep_items = ['[']
@@ -107,7 +86,7 @@ class SinglyLinkedList:
         while curr_node:
             if curr_node != self.head:
                 str_rep_items.append(', ')
-            str_rep_items.append(str(curr_node.val))
+            str_rep_items.append(str(curr_node.item))
 
             curr_node = curr_node.next
 

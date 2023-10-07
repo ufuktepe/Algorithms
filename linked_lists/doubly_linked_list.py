@@ -43,7 +43,7 @@ class DoublyLinkedList:
 
         self.size -= 1
 
-        val = node.val
-        node.prev = node.next = node.val = None  # deprecate node
+        val = node.item
+        node.prev = node.next = node.item = None  # deprecate node
 
         return val

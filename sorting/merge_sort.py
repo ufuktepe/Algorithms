@@ -1,7 +1,5 @@
 def merge_sort(lst):
-    if len(lst) == 0:
-        return []
-    if len(lst) == 1:
+    if len(lst) <= 1:
         return lst
 
     mid_index = len(lst) // 2

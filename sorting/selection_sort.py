@@ -1,11 +1,11 @@
 def selection_sort(lst, n):
-    if n == 1:
+    if n == 0:
         return
 
-    max_idx = get_index_of_max_item(lst, n)
-    lst[n-1], lst[max_idx] = lst[max_idx], lst[n-1]
+    i = get_index_of_max_item(lst, n)      # O(n)
+    lst[n-1], lst[i] = lst[i], lst[n-1]
 
-    selection_sort(lst, n-1)                            # O(n)
+    selection_sort(lst, n-1)               # O(n^2)
 
 
 def get_index_of_max_item(lst, n):
@@ -18,7 +18,7 @@ def get_index_of_max_item(lst, n):
     return n - 1
 
 
-a = [3, 6, 10, 2, 1, 4, 9, 5, 8, 7]
+a = []
 
 selection_sort(a, len(a))
 
