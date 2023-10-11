@@ -1,5 +1,5 @@
-from min_priority_queue import Item
-from min_priority_queue import MinPriorityQueue
+from graphs.dijkstra.min_priority_queue import Item
+from graphs.dijkstra.min_priority_queue import MinPriorityQueue
 
 
 class Vertex(Item):
