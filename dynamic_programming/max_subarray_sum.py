@@ -1,5 +1,6 @@
 
 def max_subarray_sum(a):
+    # O(n^2) solution
     n = len(a)
     max_sum = float('-inf')
     start_idx = None
@@ -30,9 +31,9 @@ def max_subarray_sum(a):
 
 
 def max_subarray_sum_v2(a):
+    # O(n) solution
     n = len(a)
     max_sum = float('-inf')
-    start_idx = None
     end_idx = None
 
     start_indices = [i for i in range(n)]
@@ -52,7 +53,6 @@ def max_subarray_sum_v2(a):
 
             if max_sum < x[i]:
                 max_sum = x[i]
-
                 end_idx = i
 
     return max_sum, start_indices, end_idx
