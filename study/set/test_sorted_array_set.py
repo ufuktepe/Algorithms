@@ -1,4 +1,4 @@
-from set.sorted_array_set import SortedArraySet
+from study.set.sorted_array_set import SortedArraySet
 
 
 class Item:

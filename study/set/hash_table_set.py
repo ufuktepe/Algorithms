@@ -1,7 +1,7 @@
 from random import randint
 
-from linked_lists.singly_linked_list import SinglyLinkedList
-from set.set_from_seq import SetFromSeq
+from study.linked_lists.singly_linked_list import SinglyLinkedList
+from study.set.set_from_seq import SetFromSeq
 
 
 class HashTableSet:

@@ -43,6 +43,15 @@ def iterative(head):
     return prev
 
 
+def recursive(node, prev=None):
+    if not node:
+        return prev
+
+    next_node = node.next
+    node.next = prev
+    return recursive(next_node, node)
+
+
 if __name__ == '__main__':
     a = Node('a')
     b = Node('b')
@@ -56,7 +65,7 @@ if __name__ == '__main__':
     c.next = d
     d.next = e
 
-    head = iterative(head)
+    head = recursive(head)
 
     cur = head
     while cur:

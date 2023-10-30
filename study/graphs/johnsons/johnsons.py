@@ -1,6 +1,6 @@
-from graphs.dijkstra.min_priority_queue import Item, MinPriorityQueue
-from graphs.dijkstra.dijkstra import dijkstra
-from graphs.bellman_ford.bellman_ford import bellman_ford
+from study.graphs.dijkstra.min_priority_queue import Item
+from study.graphs.dijkstra.dijkstra import dijkstra
+from study.graphs.bellman_ford.bellman_ford import bellman_ford
 
 
 class Vertex(Item):

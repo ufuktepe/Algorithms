@@ -1,4 +1,4 @@
-from linked_lists.singly_linked_list_node import SinglyLinkedListNode as Node
+from study.linked_lists.singly_linked_list_node import SinglyLinkedListNode as Node
 
 
 class SinglyLinkedList:
