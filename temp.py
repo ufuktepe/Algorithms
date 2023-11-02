@@ -1,10 +1,6 @@
-import heapq
+x = [(2, 3), (1, 4)]
 
-
-arr = [12, 8, 2, 6, 4, 10]
-
-heapq.heapify(arr)
-
-heapq.heappop(arr)
-
-print(arr)
+if x[0] < x[1]:
+    print('YES')
+else:
+    print('NO')
