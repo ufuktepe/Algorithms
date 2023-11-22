@@ -1,14 +1,11 @@
+def print_bits(x):
+    bits = []
+    while x:
+        bits.append(x & 1)
+        x = x >> 1
+
+    for bit in bits[::-1]:
+        print(bit, end='')
 
 
-def double(x):
-    for i in range(len(x)):
-        x[i] *= 2
-
-
-def double_v2(y):
-    y = y * 2
-
-
-y = 6
-double_v2(y)
-print(y)
+print_bits(29)
