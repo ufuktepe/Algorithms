@@ -1,4 +1,7 @@
-def is_identical(p, q):
+from node import get_balanced_bst
+
+# Time: O(N)  Space: O(N)
+def is_same_tree(p, q):
     stack = [(p, q)]
 
     while stack:
@@ -17,3 +20,11 @@ def is_identical(p, q):
         stack.append((root1.right, root2.right))
 
     return True
+
+
+def test():
+    p = get_balanced_bst(6)
+    q = get_balanced_bst(6)
+    r = get_balanced_bst(7)
+    assert is_same_tree(p, q)
+    assert is_same_tree(p, r) is False
