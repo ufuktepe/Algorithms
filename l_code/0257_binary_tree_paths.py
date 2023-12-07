@@ -32,17 +32,42 @@ def get_paths(root):
 
     return res
 
+# Time: O(Nlog(N)) if bst and O(N) if linked-list
+# Space: O(Nlog(N)) if bst and O(N) if linked-list
+def get_paths_v2(root):
+    if not root:
+        return None
+
+    paths = []
+    def construct_path(node, path):
+        if node is None:
+            return
+        path.append(str(node.val))
+        if node.left is None and node.right is None:
+            paths.append(path[:])
+
+        construct_path(node.left, path)
+        construct_path(node.right, path)
+        path.pop()
+
+    construct_path(root, [])
+
+    res = []
+    for path in paths:
+        res.append('->'.join(path))
+    return res
+
 
 def test_1_node():
     root = Node(1)
-    assert get_paths(root) == ['1']
+    assert get_paths_v2(root) == ['1']
 
 
 def test_2_nodes():
     root = get_balanced_bst(2)
-    assert get_paths(root) == ['1->2']
+    assert get_paths_v2(root) == ['1->2']
 
 
 def test_7_nodes():
     root = get_balanced_bst(7)
-    assert get_paths(root) == ['4->2->1', '4->2->3', '4->6->5', '4->6->7']
+    assert get_paths_v2(root) == ['4->2->1', '4->2->3', '4->6->5', '4->6->7']
