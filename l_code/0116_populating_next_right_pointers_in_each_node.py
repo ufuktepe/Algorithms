@@ -53,6 +53,7 @@ def connect_dfs(root):
         connect_dfs(root.right)
 
 
+
 def test_1():
     a = TreeNode('a')
     b = TreeNode('b')
@@ -66,7 +67,7 @@ def test_1():
     b.left, b.right = d, e
     c.left, c.right = f, g
 
-    connect_dfs(a)
+    connect_new(a)
 
     assert a.next is None
     assert b.next == c
