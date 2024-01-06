@@ -1,3 +1,3 @@
-s = '06'
-
-print(int(s))
+s = [1, 2]
+s.reverse()
+print(s)
