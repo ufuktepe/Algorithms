@@ -1,3 +1,5 @@
-s = [1, 2]
-s.reverse()
-print(s)
+
+if t := 5 > 4:
+    print('yes')
+else:
+    print('no')

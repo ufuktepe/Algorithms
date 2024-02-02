@@ -17,6 +17,20 @@ class NaryNode:
         self.children = [] if children is None else children
 
 
+def get_linked_list(n):
+    if n < 1:
+        return
+
+    dummy = SLLNode(0)
+    cur = dummy
+    i = 1
+    while i <= n:
+        cur.next = SLLNode(i)
+        cur = cur.next
+        i += 1
+
+    return dummy.next
+
 def get_balanced_bst(n):
     if n < 1:
         return None
