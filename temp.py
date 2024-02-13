@@ -1,5 +1,4 @@
 
-if t := 5 > 4:
-    print('yes')
-else:
-    print('no')
+
+for j in range(0, -1, -1):
+    print('a')

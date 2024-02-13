@@ -41,10 +41,49 @@ def find_words(board, words):
     return res
 
 
+def find_words_v2(board, words):
+    res = []
+    END = '#'
+    trie = {}
+    for word in words:
+        node = trie
+        for ch in word:
+            if ch not in node:
+                node[ch] = {}
+            node = node[ch]
+        node[END] = None
+
+    visited = set()
+
+    def search(r, c, parent, prefix):
+        visited.add((r, c))
+        ch = board[r][c]
+        cur = parent[ch]
+
+        if END in cur:
+            res.append(prefix + ch)
+            del cur[END]
+
+        for x, y in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
+            if 0 <= x < len(board) and 0 <= y < len(board[0]) and (x, y) not in visited and board[x][y] in cur:
+                search(x, y, cur, prefix + ch)
+        visited.remove((r, c))
+
+        if len(cur) == 0:
+            del parent[ch]
+
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            visited = set()
+            if board[i][j] in trie:
+                search(i, j, trie, '')
+
+    return res
+
 def test():
     board = [["o","a","a","n"],
              ["e","t","a","e"],
              ["i","h","k","r"],
              ["i","f","l","v"]]
     words = ["oath","pea","eat","rain"]
-    assert set(find_words(board, words)) == {'eat', 'oath'}
+    assert set(find_words_v2(board, words)) == {'eat', 'oath'}
